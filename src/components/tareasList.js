@@ -9,14 +9,14 @@ const TareasList = () => {
     const[showForm, setShowForm] = useState(false);
 
     useEffect(() => {
-        fetch("https://lezamaapi.azurewebsites.net/tareas/")
+        fetch("https://lezamamongoapi.azurewebsites.net/tareas/")
             .then((res) => res.json())
             .then((data) => setTareas(data.data))
             .catch((err) => console.log(`Error: " ${err}`))
     }, [])
 
     const getTareas = () => {
-        fetch("https://lezamaapi.azurewebsites.net/tareas/")
+        fetch("https://lezamamongoapi.azurewebsites.net/tareas/")
             .then((res) => res.json())
             .then((data) => setTareas(data.data))
             .then((err) => console.log(`Error: ${err}`));
@@ -24,7 +24,7 @@ const TareasList = () => {
 
     const createTarea = (data) => {
         try {
-            fetch("https://lezamaapi.azurewebsites.net/tareas", {
+            fetch("https://lezamamongoapi.azurewebsites.net/tareas/", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const TareasList = () => {
 
     const deleteTarea = (data) => {
         try {
-            fetch(`https://lezamaapi.azurewebsites.net/tareas/${data}`, {
+            fetch(`https://lezamamongoapi.azurewebsites.net/tareas/${data}`, {
                 method: "DELETE"
             })
                 .then(response => response.json())
@@ -60,7 +60,7 @@ const TareasList = () => {
 
     const updateTarea = (data) => {
         try {
-            fetch(`https://lezamaapi.azurewebsites.net/tareas/${data._id}`, {
+            fetch(`https://lezamamongoapi.azurewebsites.net/tareas/${data._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
